@@ -1,0 +1,66 @@
+{% load static%}
+
+{% block scripts %}
+<script>
+  function CopyText() {
+    console.log("CopyText function called");
+    var text = "lazzaroo100@gmail.com"; // change this to the text you want to copy
+    navigator.clipboard.writeText(text).then(function() {
+      console.log("Text copied: ");
+      var message = document.createElement("div");
+      message.innerText = "Text copied : " + text;
+      message.style.position = "fixed";
+      message.style.top = "10px";
+      message.style.right = "10px";
+      message.style.backgroundColor = "green";
+      message.style.color = "white";
+      message.style.padding = "10px";
+      message.style.borderRadius = "5px";
+      message.style.opacity = "0.75";
+      message.style.transition = "opacity 0.5s ease-in-out";
+      document.body.appendChild(message);
+      setTimeout(function() {
+        message.style.opacity = "0";
+        setTimeout(function() {
+          message.parentNode.removeChild(message);
+        }, 500);
+      }, 2000);
+    }, function() {
+      console.error("Error copying text to clipboard");
+    });
+  }
+</script>
+  
+{% endblock scripts %}
+
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container">
+    <a class="navbar-brand fw-bold" href="/">Lázaro Herraiz</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="/blog/">Projects more info</a>
+        <a 
+        class="btn" 
+        href="{% static 'portfoliio/CV.pdf' %}"
+        target="_blank"
+        >Download CV</a>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Contact
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="https://www.linkedin.com/in/lazaro-herraiz-olmeda/">linkedin</a></li>
+            <li><a class="dropdown-item" href="#" onclick="CopyText()">Mail</a></li>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+          </ul>
+        </li>
+
+      </div>
+    </div>
+  </div>
+</nav>

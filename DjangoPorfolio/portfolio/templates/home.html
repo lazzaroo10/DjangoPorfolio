@@ -1,0 +1,80 @@
+<!-- PROJECTO -->
+
+{% extends 'layout.html'%}
+{% block content%}
+{% load static%}
+
+
+<header class="row bg-light" >
+    <div class="col-md-4">
+        <img src="{% static 'portfoliio\profile2.jpg' %}" alt ="">
+
+    </div>
+
+    <div class="col-md-8 my-auto">
+        <h1> I'm Lázaro Herraiz</h1>
+        <h3> Data Science </h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aperiam nesciunt praesentium molestiae id officia 
+            vitae odit ab. Hic dolores repellat expedita error voluptate! Ratione perferendis commodi quasi voluptas quo?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aperiam nesciunt praesentium molestiae id officia 
+            vitae odit ab. Hic dolores repellat expedita error voluptate! Ratione perferendis commodi quasi voluptas quo?
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione aperiam nesciunt praesentium molestiae id officia 
+            vitae odit ab. Hic dolores repellat expedita error voluptate! Ratione perferendis commodi quasi voluptas quo?
+            
+        </p>
+        <a 
+          class="btn" 
+          href={%static "portfoliio\CV.pdf" %}
+          target="_blank"
+          >
+            Download CV</a>
+    </div>
+
+</header>
+
+
+<!-- Porfolio Section -->
+
+
+<div class="row my-4 text-center">
+
+    <h3>Skills</h3>
+
+    <p>
+        Lorem ipsum dolor sit amet consectetur 
+        adipisicing elit. Eveniet sint dicta dolorum rerum.
+        Amet unde quos dolore consectetur et explicabo?
+
+    </p>
+
+    <h3>Projects</h3>
+    <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet sint dicta dolorum rerum. Amet unde quos dolore consectetur et explicabo?
+
+    </p>
+
+
+
+    {% for project in projects %}
+
+        <div class="col-md-4 p-4    ">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h2> {{project.title}} </h2>
+                    <p> {{project.description}}</p>
+                    <img src="{{project.image.url}}" alt'{{project.title}}' class = 'img-fluid  '> 
+                    
+                    {%if project.url%}
+                        <a href="{{project.url}}">{{project.url}}</a>
+                    {%endif%}
+                </div>
+            </div>
+        </div>
+
+    {% endfor %}
+    {% endblock %}
+
+</div>
+
+
+

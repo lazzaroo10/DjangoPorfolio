@@ -1,0 +1,15 @@
+{% extends 'layout.html'%}
+{% block content%}
+
+
+<h1>Post</h1>
+
+
+<h2> {{post_id}} </h2>
+<!-- Se puede poner otro formato de fecha más bonito si eso -->
+<h3> {{post_id.date}}</h3>
+<p> {{post_id.description|safe}}</p>
+<img src="{{post_id.image.url}}" alt'{{post_id.title}}'> 
+
+
+{% endblock %}
